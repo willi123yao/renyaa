@@ -1,8 +1,8 @@
-# nyaa-php
-Nyaa.se replacement in PHP
+# AniLove
+Created for anime lovers to gather and share!
 
 ## Requirements:
-Webserver with PHP support (e.g. [XAMPP](https://www.apachefriends.org/index.html))
+Webserver with PHP and SQLITE support (e.g. [XAMPP](https://www.apachefriends.org/index.html))
 
 ## Installation
 1. Download project files (Clone or download > zip) and unzip them to htdocs for XAMPP
