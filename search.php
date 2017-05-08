@@ -76,7 +76,7 @@
   function clicksearch(){
     $('#showall-btn').fadeOut(100);
     $('#catagories-btn').fadeOut(100 , function() {
-      $('#search-container').animate({ "width": "220px" }, 500, function(){
+      $('#search-container').animate({ "width": "250px" }, 500, function(){
         $('#searchbar').show();
         $('#searchbar').focus();
       });
@@ -96,7 +96,7 @@
 
   <style>
   #searchbar {
-    width: 200px;
+    width: 170px;
   }
   </style>
 </head>

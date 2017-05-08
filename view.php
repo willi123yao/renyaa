@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/materialize.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <title>Nyaa Mirror - Home</title>
+  <title>NyaaPHP - Home</title>
   <script>
   //<![CDATA[
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -45,7 +45,7 @@
   function clicksearch(){
     $('#showall-btn').fadeOut(100);
     $('#catagories-btn').fadeOut(100 , function() {
-      $('#search-container').animate({ "width": "220px" }, 500, function(){
+      $('#search-container').animate({ "width": "250px" }, 500, function(){
         $('#searchbar').show();
         $('#searchbar').focus();
       });
@@ -65,7 +65,7 @@
 
   <style>
   #searchbar {
-    width: 200px;
+    width: 170px;
   }
   </style>
 </head>
@@ -162,7 +162,7 @@
       <ul class="hide-on-med-and-down">
         <li><a onclick="showmenu()"><i class="material-icons">menu</i></a></li>
       </ul>
-        <a href="#" class="brand-logo">Nyaa Mirror</a>
+        <a href="#" class="brand-logo">NyaaPHP</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a id="showall-btn" href="search.php">View All</a></li>
         <li><a href="#" data-activates="slide-out" class="btn button-collapse"></a></li>
