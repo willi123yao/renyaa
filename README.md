@@ -1,5 +1,5 @@
-# AniLove
-Created for anime lovers to gather and share!
+# Nyaa Pantsu
+Think of this as a public library for all things VN and anime related. It is a digital library that is open to everyone, forever; it is a historical artifact, and is a gift each generation imparts to the next.
 
 ## Requirements:
 Webserver with PHP and SQLITE support (e.g. [XAMPP](https://www.apachefriends.org/index.html))
