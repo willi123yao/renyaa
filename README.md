@@ -16,5 +16,5 @@ PS. If [http://localhost:80/](http://localhost:80/) does not work try [http://lo
 You can find how to contribute on the [CONTRIBUTING.md](./CONTRIBUTING.md) page.
 
 ## Planned work or features
-Head over to [TODOS.md](./TODOS.md) page for more information.
+Head over to [TODO.md](./TODO.md) page for more information.
 
