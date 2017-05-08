@@ -9,10 +9,10 @@
 * Server Logging System
 * Announcements on Index
 * Mobile Version (Menu button)
-* Multiple pages of Search
 
 # DONE:
 * Basic design of Site
 * Advanced Search
 * Search Function (SQLITE)
 * Description and Comments of torrents
+* Multiple pages of Search
