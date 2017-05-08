@@ -1,4 +1,4 @@
-TODO:
+# TODO:
 * Moderation and Reports
 * User System(Userbase + Comments + Upload + Report + Rating)
 * Torrent Tracking System
@@ -10,7 +10,7 @@ TODO:
 * Mobile Version (Menu button)
 * Multiple pages of Search
 
-DONE:
+# DONE:
 * Basic design of Site
 * Advanced Search
 * Search Function (SQLITE)
