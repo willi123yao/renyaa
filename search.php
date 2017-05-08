@@ -32,7 +32,29 @@
   }
 
   if(isset($_GET['p'])) {
-    $p = $_GET['p'] - 1;
+    $p = $_GET['p'];
+  }
+
+  $db = new SQLite3('nyaa.db');
+
+  if($c == "_" | $c == "") {
+    $count = $db->query("SELECT COUNT(*) AS count FROM torrents WHERE (torrent_hash is not null AND torrent_name LIKE '%".$q."%')");
+  }
+  else if (substr($c,2) == ""){
+    $count = $db->query("SELECT COUNT(*) AS count FROM torrents WHERE (torrent_hash is not null AND category_id = ".substr($c,0,1)." AND torrent_name LIKE '%".$q."%')");
+  }
+  else {
+    $count = $db->query("SELECT COUNT(*) AS count FROM torrents WHERE (torrent_hash is not null AND category_id = ".substr($c,0,1)." AND sub_category_id = ".substr($c,2,2)." AND torrent_name LIKE '%".$q."%')");
+  }
+
+  $rownum = $count->fetchArray(SQLITE3_ASSOC);
+
+  $path = 'search.php?c='.$c.'&s='.$s.'&sort='.$sort.'&order='.$order.'&max='.$max.'&q='.$q;
+
+  $pages = round($rownum['count'] / $max);
+
+  if ($p > $pages) {
+    $p = $pages;
   }
 ?>
 
@@ -43,7 +65,7 @@
   <link rel="stylesheet" href="css/materialize.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <title>NyaaPHP - Home</title>
+  <title>Home - AniLove</title>
   <script>
   //<![CDATA[
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -68,6 +90,7 @@
       $('#search-container').animate({ "width": "0px" }, 500, function(){
         $('#showall-btn').fadeIn(100);
         $('#catagories-btn').fadeIn(100);
+        $('#login-btn').fadeIn(100);
       });
     });
     $('select').material_select();
@@ -75,6 +98,7 @@
 
   function clicksearch(){
     $('#showall-btn').fadeOut(100);
+    $('#login-btn').fadeOut(100);
     $('#catagories-btn').fadeOut(100 , function() {
       $('#search-container').animate({ "width": "250px" }, 500, function(){
         $('#searchbar').show();
@@ -111,7 +135,7 @@
         <h4>Categories</h4>
         <hr style="height:10px; visibility:hidden;" />
       </div></li>
-      <li><a href="search.php">All Categories</a></li>
+      <li><a href="search.php?c=_">All Categories</a></li>
       <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
           <li>
@@ -193,9 +217,10 @@
       <ul class="hide-on-med-and-down">
         <li><a onclick="showmenu()"><i class="material-icons">menu</i></a></li>
       </ul>
-        <a href="index.php" class="brand-logo">NyaaPHP</a>
+        <a href="index.php" class="brand-logo">AniLove</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a id="showall-btn" href="search.php">View All</a></li>
+        <li><a id="login-btn" href="user/login.php">Login</a></li>
+        <li><a id="showall-btn" href="search.php?c=_">View All</a></li>
         <li><a href="#" data-activates="slide-out" class="btn button-collapse"></a></li>
         <li><a id="catagories-btn" href="#" onclick="showmenu()">Categories</a></li>
         <li><a href="#" onclick="clicksearch()"><i class="material-icons prefix">search</i></a></li>
@@ -301,6 +326,34 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+  <?php
+
+    if($p >= 9) {
+      echo '<div class="col s1"><a class="btn green" style="width: 8%" href="'.$path.'&p='.($p-9).'">&#60;</a></div>';
+    }
+
+    for($i = 1;$i < 10; $i++) {
+      if ((floor(($p-1)/9)*9+$i) > $pages) {
+        break;
+      }
+      if($p%9 == $i | $p%9 + 9 == $i) {
+        $color = 'red';
+      }
+      else {
+        $color = ' ';
+      }
+      echo '<div class="col s1"><a class="btn '.$color.'" style="width: 8%" href="'.$path.'&p='.(floor(($p-1)/9)*9+$i).'">'.(floor(($p-1)/9)*9+$i).'</a></div>';
+    }
+
+    if((floor(($p-1)/9)*9+8) < $pages - $pages%9) {
+      echo '<div class="col s1"><a class="btn green" style="width: 8%" href="'.$path.'&p='.($p+9).'">&#62;</a></div>';
+    }
+   ?>
+      </div>
+    </div>
+
 <div style="width: 90%; margin-left: 5%">
   <table class="bordered responsive-table">
         <thead>
@@ -325,13 +378,11 @@
     return number_format($size)." bytes";
   }
 
-  $db = new SQLite3('nyaa.db');
-
   if($c == "_" | $c == "") {
     $results = $db->query("SELECT torrent_hash,torrent_id,category_id,sub_category_id,status_id,torrent_name,date,filesize FROM torrents WHERE (torrent_hash is not null AND torrent_name LIKE '%".$q."%') ORDER BY torrent_id ".$order." LIMIT ".$max." OFFSET ".($max * $p));
   }
   else if (substr($c,2) == ""){
-    $results = $db->query("SELECT torrent_hash,torrent_id,category_id,sub_category_id,status_id,torrent_name,date,filesize FROM torrents WHERE (torrent_hash is not null AND category_id = ".substr($c,0,1)." AND torrent_name LIKE '%".$q."%') ORDER BY torrent_id ".$order." LIMIT ".$max." OFFSET ".($max * $p));
+    $results = $db->query("SELECT torrent_hash,torrent_id,category_id,sub_category_id,status_id,torrent_name,date,filesize FROM torrents WHERE (torrent_hash is not null AND category_id = ".substr($c,0,1)." AND torrent_name LIKE '%".$q."%') ORDER BY torrent_id ".$order." LIMIT ".$max." OFFSET ".($max * $p-1));
   }
   else {
     $results = $db->query("SELECT torrent_hash,torrent_id,category_id,sub_category_id,status_id,torrent_name,date,filesize FROM torrents WHERE (torrent_hash is not null AND category_id = ".substr($c,0,1)." AND sub_category_id = ".substr($c,2,2)." AND torrent_name LIKE '%".$q."%') ORDER BY torrent_id ".$order." LIMIT ".$max." OFFSET ".($max * $p));
@@ -355,7 +406,35 @@
 ?>
 
   </tbody>
-  </table>
+</table><br><br>
+
+  <div class="container">
+    <div class="row">
+      <?php
+
+        if($p >= 9) {
+          echo '<div class="col s1"><a class="btn green" style="width: 8%" href="'.$path.'&p='.($p-9).'">&#60;</a></div>';
+        }
+
+        for($i = 1;$i < 10; $i++) {
+          if ((floor(($p-1)/9)*9+$i) > $pages) {
+            break;
+          }
+          if($p%9 == $i | $p%9 + 9 == $i) {
+            $color = 'red';
+          }
+          else {
+            $color = ' ';
+          }
+          echo '<div class="col s1"><a class="btn '.$color.'" style="width: 8%" href="'.$path.'&p='.(floor(($p-1)/9)*9+$i).'">'.(floor(($p-1)/9)*9+$i).'</a></div>';
+        }
+
+        if((floor(($p-1)/9)*9+8) < $pages - $pages%9) {
+          echo '<div class="col s1"><a class="btn green" style="width: 8%" href="'.$path.'&p='.($p+9).'">&#62;</a></div>';
+        }
+       ?>
+    </div>
+  </div>
 
 </div>
 
