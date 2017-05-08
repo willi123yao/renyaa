@@ -1,4 +1,5 @@
 # TODO:
+* Multiple themes (and custom themes)
 * Moderation and Reports
 * User System(Userbase + Comments + Upload + Report + Rating)
 * Torrent Tracking System
