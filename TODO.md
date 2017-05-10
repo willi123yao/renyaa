@@ -1,4 +1,5 @@
 # TODO:
+* https://trello.com/b/kudR7Sg3
 * Creation of bootstrap based new themes
 * Restoration of original nyaa website design
 * Moderation and Reports
@@ -14,6 +15,7 @@
 * Export db to mysql
 
 # DONE:
+* https://trello.com/b/0FuPuTiN
 * Basic design of Site
 * Advanced Search
 * Search Function (SQLITE)
