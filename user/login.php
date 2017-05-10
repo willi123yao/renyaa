@@ -1,11 +1,19 @@
+<?php
+  session_start();
+  if(isset($_SESSION['usrname'])) {
+    header("Location ../index.php");
+    die;
+  }
+?>
+
 <html>
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="css/materialize.css">
+  <link rel="stylesheet" href="../css/materialize.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-  <title>Home - Re:Nyaa</title>
+  <script type="text/javascript" src="../js/materialize.min.js"></script>
+  <title>Login - Re:Nyaa</title>
   <script>
   //<![CDATA[
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -155,15 +163,15 @@
       <ul class="hide-on-med-and-down">
         <li><a onclick="showmenu()"><i class="material-icons">menu</i></a></li>
       </ul>
-        <a href="#" class="brand-logo">Re:Nyaa</a>
+        <a href="../index.php" class="brand-logo">Re:Nyaa</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a id="login-btn" href="user/login.php">Login</a></li>
-        <li><a id="showall-btn" href="search.php?c=_">View All</a></li>
+        <li><a id="login-btn" href="#">Login</a></li>
+        <li><a id="showall-btn" href="../search.php?c=_">View All</a></li>
         <li><a href="#" data-activates="slide-out" class="btn button-collapse"></a></li>
         <li><a id="catagories-btn" href="#" onclick="showmenu()">Categories</a></li>
         <li><a href="#" onclick="clicksearch()"><i class="material-icons prefix">search</i></a></li>
           <div id="search-container">
-            <form action="search.php" method="GET">
+            <form action="../search.php" method="GET">
               <input id="searchbar" type="text" name="q" placeholder="Search..." style="display:none">
             </form>
           </div>
@@ -171,27 +179,53 @@
       </ul>
     </div>
   </nav>
-  <div class="container">
-<a class="btn" href="search.php?c=_">View All Torrents</a>
-<pre>
-  TODO:
-  * Description and Comments of torrrents
-  * Moderation and Reports
-  * User System(Userbase + Comments + Upload + Report + Rating)
-  * Torrent Tracking System
-  * Installation configs and setup.php
-  * Minimalist API
-  * Custom 404
-  * Server Logging System
-  * Announcements on Index
-  * Mobile Version
 
-  DONE:
-  * Basic design of Site
-  * Advanced Search
-  * Search Function (SQLITE)
-</pre>
-</div>
+  <div class="section"></div>
+  <main>
+    <center>
+
+      <div class="section"></div>
+      <div class="section"></div>
+
+      <div class="container">
+        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+          <h4 class="amber-text accent-4">Login</h4>
+
+          <form action="./auth.php" class="col s12" method="post">
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='email' name='email' id='email' required/>
+                <label for='email'>Email</label>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='password' name='password' id='password' required/>
+                <label for='password'>Password</label>
+              </div>
+              <label style='float: right;'>
+								<a class='red-text' href='#!'><b>Forgot Password?</b></a>
+							</label>
+            </div>
+
+            <br />
+            <center>
+              <div class='row'>
+                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect amber accent-4'>Login</button>
+              </div>
+            </center>
+          </form>
+        </div>
+      </div>
+      <a href="./register.php">Create account</a>
+    </center>
+
+    <div class="section"></div>
+    <div class="section"></div>
+  </main>
 
 </body>
 </html>

@@ -65,7 +65,7 @@
   <link rel="stylesheet" href="css/materialize.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <title>Home - AniLove</title>
+  <title>Search - Re:Nyaa</title>
   <script>
   //<![CDATA[
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -217,7 +217,7 @@
       <ul class="hide-on-med-and-down">
         <li><a onclick="showmenu()"><i class="material-icons">menu</i></a></li>
       </ul>
-        <a href="index.php" class="brand-logo">AniLove</a>
+        <a href="index.php" class="brand-logo">Re:Nyaa</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a id="login-btn" href="user/login.php">Login</a></li>
         <li><a id="showall-btn" href="search.php?c=_">View All</a></li>
