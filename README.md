@@ -1,5 +1,5 @@
-[![Build Status](https://semaphoreci.com/api/v1/renyaa/nyaapantsu/branches/master/badge.svg)](https://semaphoreci.com/renyaa/nyaapantsu)
-# Nyaa Pantsu
+# Nyaa Pantsu [![Build Status](https://semaphoreci.com/api/v1/renyaa/nyaapantsu/branches/master/badge.svg)](https://semaphoreci.com/renyaa/nyaapantsu)
+
 Think of this as a public library for all things VN and anime related. It is a digital library that is open to everyone, forever; it is a historical artifact, and is a gift each generation imparts to the next.
 
 ## Requirements:
