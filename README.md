@@ -13,6 +13,18 @@ Webserver with PHP and SQLITE support (e.g. [XAMPP](https://www.apachefriends.or
 
 PS. If [http://localhost:80/](http://localhost:80/) does not work try [http://localhost:8080/](http://localhost:8080/)
 
+## Docker
+
+We now have integrated [docker](https://www.docker.com/) into our project for ease of development and deployment.
+
+1. Install docker [here](https://www.docker.com/)
+2. Download the latest project files [here](https://github.com/renyaa/renyaa/archive/master.zip)
+3. Make sure you have the DB dumps (`nyaa.db`)
+4. Run `$ docker-compose up`
+5. Go to: http://localhost:8080
+
+Done!
+
 ## Contributing
 You can find how to contribute on the [CONTRIBUTING.md](./CONTRIBUTING.md) page.
 
