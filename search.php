@@ -437,6 +437,25 @@
   </div>
 
 </div>
+<div class="section"></div>
+
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col s12">
+                <h5 class="white-text">Re:Nyaa</h5>
+                <p class="grey-text text-lighten-4">A public library of anime-related media, from one generation to the next.</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Re:Nyaa Team - Source available on
+            <a href="https://github.com/renyaa/renyaa">GitHub</a>
+            <a class="grey-text text-lighten-4 right" href="./index.php">Home</a>
+            </div>
+          </div>
+        </footer>
 
 </body>
 </html>
