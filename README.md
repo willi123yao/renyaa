@@ -1,4 +1,4 @@
-!![Re:Nyaa](renyaalogo-nobg.png)
+![Re:Nyaa](renyaalogo-nobg.png)
 
 # Re:Nyaa [![Build Status](https://semaphoreci.com/api/v1/renyaa/nyaapantsu/branches/master/badge.svg)](https://semaphoreci.com/renyaa/nyaapantsu)
 
