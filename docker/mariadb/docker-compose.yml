@@ -1,0 +1,13 @@
+version: '2'
+services:
+  maria: 
+    image: mariadb
+    environment:
+        MYSQL_ROOT_PASSWORD: 'ROOT_PASSWORD'
+        MYSQL_DATABASE: 'nyaa_db'
+        MYSQL_USER: 'nyaa'
+        MYSQL_PASSWORD: 'USER_PASSWORD'
+    volumes:
+      - "../../../mariadb:/var/lib/mysql"
+    ports:
+      - "33060:3306"
