@@ -378,15 +378,21 @@
     return number_format($size)." bytes";
   }
 
-  if($c == "_" | $c == "") {
-    $results = $db->query("SELECT torrent_hash,torrent_id,category_id,sub_category_id,status_id,torrent_name,date,filesize FROM torrents WHERE (torrent_hash is not null AND torrent_name LIKE '%".$q."%') ORDER BY torrent_id ".$order." LIMIT ".$max." OFFSET ".($max * $p));
+  if($c == "_" || $c == "") {
+    $category_id = '';
   }
-  else if (substr($c,2) == ""){
-    $results = $db->query("SELECT torrent_hash,torrent_id,category_id,sub_category_id,status_id,torrent_name,date,filesize FROM torrents WHERE (torrent_hash is not null AND category_id = ".substr($c,0,1)." AND torrent_name LIKE '%".$q."%') ORDER BY torrent_id ".$order." LIMIT ".$max." OFFSET ".($max * $p-1));
+  else if (substr($c,2) == "") {
+    $category_id = ' AND category_id = '.substr($c,0,1);
   }
   else {
-    $results = $db->query("SELECT torrent_hash,torrent_id,category_id,sub_category_id,status_id,torrent_name,date,filesize FROM torrents WHERE (torrent_hash is not null AND category_id = ".substr($c,0,1)." AND sub_category_id = ".substr($c,2,2)." AND torrent_name LIKE '%".$q."%') ORDER BY torrent_id ".$order." LIMIT ".$max." OFFSET ".($max * $p));
+    $category_id = ' AND sub_category_id = '.substr($c,2,2);
   }
+
+  if($s != "") {
+    $status_id = ' AND status_id = '.$s;
+  }
+  @$results = $db->query("SELECT torrent_hash,torrent_id,category_id,sub_category_id,status_id,torrent_name,date,filesize FROM torrents WHERE (torrent_hash is not null".$category_id.$status_id." AND torrent_name LIKE '%".$q."%') ORDER BY torrent_id ".$order." LIMIT ".$max." OFFSET ".($max * ($p-1)));
+
 
   while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
     //TODO: Add links
@@ -394,6 +400,9 @@
     $img = '<img src="img/torrents/'.$row['sub_category_id'].'.png">';
 
     $epoch = $row['date'];
+    if($epoch == '') {
+      $epoch = 0;
+    }
     $date = new DateTime("@$epoch");
 
     $unit = "";

@@ -201,6 +201,9 @@
           $row = $results->fetchArray(SQLITE3_ASSOC);
 
           $epoch = $row['date'];
+          if($epoch == '') {
+            $epoch = 0;
+          }
           $date = new DateTime("@$epoch");
 
           $unit = "";
