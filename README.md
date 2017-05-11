@@ -22,7 +22,8 @@ We now have integrated [docker](https://www.docker.com/) into our project for ea
 1. Install docker [here](https://www.docker.com/)
 2. Download the latest project files [here](https://github.com/renyaa/renyaa/archive/master.zip)
 3. Make sure you have the DB dumps (`nyaa.db`)
-4. Run `$ docker-compose up`
+4. Run `cd docker`
+4. Run `docker-compose up`
 5. Go to: http://localhost:8080
 
 Done!
