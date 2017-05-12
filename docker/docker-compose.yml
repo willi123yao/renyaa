@@ -10,7 +10,7 @@ services:
   apache:
       image: php:7.0-apache
       volumes:
-        - ../public:/var/www/html/
+        - ../:/var/www/html/
       links:
         - maria
   maria: 
