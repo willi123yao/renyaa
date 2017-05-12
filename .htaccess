@@ -1,4 +1,7 @@
 RewriteEngine On
+RewriteBase /renyaa/
 
-RewriteCond %{REQUEST_URI} !^/public/
-RewriteRule ^(.*)$ /public/$1 [L,R=301]
+RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+RewriteRule ^ %1 [L,NE,R=301]
+
+RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
