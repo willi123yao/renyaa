@@ -195,7 +195,7 @@
 
             <div class='row'>
               <div class='input-field col s12'>
-                <input class='validate' type='text' name='usrname' id='usrname' required/>
+                <input class='validate' type='text' name='usrname' id='usrname' autofocus required/>
                 <label for='usrname'>Username</label>
               </div>
             </div>
@@ -245,7 +245,7 @@
           </form>
         </div>
       </div>
-      <a href="#!">Have an account? Proceed to Login</a>
+      <a href="./login.php">Have an account? Proceed to Login</a>
     </center>
 
     <div class="section"></div>
