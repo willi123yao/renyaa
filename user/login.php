@@ -199,7 +199,7 @@
 
             <div class='row'>
               <div class='input-field col s12'>
-                <input class='validate' type='email' name='email' id='email' required/>
+                <input class='validate' type='email' name='email' id='email' autofocus required/>
                 <label for='email'>Email</label>
               </div>
             </div>
