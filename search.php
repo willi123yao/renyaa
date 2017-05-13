@@ -33,6 +33,9 @@
 
   if(isset($_GET['p'])) {
     $p = $_GET['p'];
+    if ($p < 1){
+      $p = 1;
+    }
   }
 
   $db = new SQLite3('nyaa.db');
@@ -330,7 +333,10 @@
   <div class="row">
   <?php
 
-    if($p >= 9) {
+    if($p < 9) {
+      echo '<div class="col s1"><a class="btn green disabled" style="width: 8%" href="'.$path.'&p='.($p-9).'">&#60;</a></div>';
+    }
+    else {
       echo '<div class="col s1"><a class="btn green" style="width: 8%" href="'.$path.'&p='.($p-9).'">&#60;</a></div>';
     }
 
@@ -420,8 +426,10 @@
   <div class="container">
     <div class="row">
       <?php
-
-        if($p >= 9) {
+        if($p < 9) {
+          echo '<div class="col s1"><a class="btn green disabled" style="width: 8%" href="'.$path.'&p='.($p-9).'">&#60;</a></div>';
+        }
+        else {
           echo '<div class="col s1"><a class="btn green" style="width: 8%" href="'.$path.'&p='.($p-9).'">&#60;</a></div>';
         }
 
@@ -441,7 +449,7 @@
         if((floor(($p-1)/9)*9+8) < $pages - $pages%9) {
           echo '<div class="col s1"><a class="btn green" style="width: 8%" href="'.$path.'&p='.($p+9).'">&#62;</a></div>';
         }
-       ?>
+      ?>
     </div>
   </div>
 
